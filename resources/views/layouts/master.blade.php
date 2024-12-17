@@ -32,9 +32,10 @@
         <!--=================================
  Main content -->
         <!-- main-content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="width: 84%;">
 
             @yield('page-header')
+
 
             @yield('content')
 
