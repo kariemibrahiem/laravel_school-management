@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\ClassRoom;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
@@ -19,6 +20,10 @@ class Grade extends Model
     protected $dates = ['deleted_at'];
 
     public $translatable = ['name'];
+
+    public function ClassRooms(){
+        $this->hasMany(ClassRoom::class);
+    }
 
 
 }

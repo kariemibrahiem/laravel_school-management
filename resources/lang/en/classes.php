@@ -3,6 +3,7 @@
 return [
 
     'title_page' => 'Classes',
+    'grade' => 'grade',
     'List_classes' => 'List Classes',
     'add_class' => 'add class',
     'edit_class'=> 'Edit Class',
@@ -14,15 +15,33 @@ return [
     'required_ar'=>'Please Enter The class Name in Arabic',
     'required_en'=>'Please Enter The class Name in English',
     'Name_class_en'=>'Name class en',
+    'stage_name'=>'Name classes',
+    'add_row'=>'add row',
+    'delete_row'=>'Delete row',
+    'proccess'=>'Processes',
+    'Edit'=>'Edit',
+    'Delete'=>'Delete',
+    'delete_Class_Error'=>'The Class cannot be Deleted because it contains Sections',
+    'Close' => 'Close',
+
+
+    
+    'title_page' => 'Classes',
+    'List_classes' => 'List Classes',
+    'add_class' => 'add class',
+    'edit_class'=> 'تعديل صف',
+    'delete_class'=> 'حذف صف',
+    'Warning_Grade'=> 'هل انت متاكد من عملية الحذف ؟',
+    'submit' => 'submit',
+    'Name_class'=>'Name_class_en',
+    'Name_class'=>'Name class ',
     'Name_Grade'=>'Name Grade',
     'add_row'=>'add row',
     'delete_row'=>'Delete row',
     'Processes'=>'Processes',
     'Edit'=>'Edit',
     'Delete'=>'Delete',
-    'delete_Class_Error'=>'The Class cannot be Deleted because it contains Sections',
     'Close' => 'Close',
-
 
 
 ];

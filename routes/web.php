@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClassRoomController;
 use App\Http\Controllers\GradeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -27,22 +28,31 @@ Auth::routes();
 
 
 
+Route::middleware("auth")->group(function(){
 
-Route::group(['prefix' => LaravelLocalization::setLocale()], function()
-{
-	Route::get('/dash', function()
+	Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 	{
-		return View("dashboard");
-	})->middleware("auth");
-
-	Route::resource("grade" , "GradeController")->middleware("auth");
-	Route::get("grade.store" , [GradeController::class, "store"])->name("grade.store");
-
+		Route::get('/dash', function()
+		{
+			return View("dashboard");
+		})->middleware("auth");
+		
+		Route::resource("grade" , "GradeController")->middleware("auth");
+		Route::get("grade.store" , [GradeController::class, "store"])->name("grade.store");
+		Route::get("grade.update" , [GradeController::class, "update"])->name("grade.update");
+		Route::get("grade.delete" , [GradeController::class, "destroy"])->name("grade.delete");
+		
+		// calss routes
+		Route::resource("classes" , "ClassRoomController");
+		Route::get("classes.store" , [ClassRoomController::class, "store"])->name("classes.store");
+		Route::get("classes.update" , [ClassRoomController::class, "updateClass"])->name("class.update");
+		Route::get("classes.delete" , [ClassRoomController::class, "destroy"])->name("class.delete");
+		
+	});
+	
 });
-
-
-
-/** OTHER PAGES THAT SHOULD NOT BE LOCALIZED **/
+	
+	/** OTHER PAGES THAT SHOULD NOT BE LOCALIZED **/
 // Route::resource('grade', 'GradeController');
 
 // Route::get('/', function () {

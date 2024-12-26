@@ -39,14 +39,14 @@
                     {{--  --}}
                     <li>
                         <a href="javascript:void(1);" data-toggle="collapse" data-target="#classes">
-                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{ lang::get("My_Classes_trans.List_classes") }}</span>
+                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{ lang::get("classes.title_page") }}</span>
                             </div>
                             
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="classes" class="collapse" data-parent="#sidebarnav_2">
-                            <li>  <a href="{{ url("grade") }}">{{ lang::get("main_side_tr.grade_section") }}</a></li>
+                            <li>  <a href="{{ url("classes") }}">{{ lang::get("classes.List_classes") }}</a></li>
                          
                         </ul>
                     </li>

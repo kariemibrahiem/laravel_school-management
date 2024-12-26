@@ -38,31 +38,29 @@ class GradeController extends Controller
    */
   public function store(Request $request)
   {
+    // $attributes = request()->validate(['name' => 'required|unique_translation:Grades',]);
+    
+    
     try{
-          
-        $request->validate([
-          "Name" => "required",
-        ]);
 
-        // translation part
-        $grade = new Grade;
-        $grade->Name = ["en" => $request->Name , "ar" => $request->Name_en];
-        $translation = [
-          "en" => $request->name_en,
-          "ar" =>$request->name
-        ];
-      // $grade->setTranslation("Name" , $translation")
-        // Display a success toast with no title
-        flash()->success('Operation completed successfully.');
-        toastr()->success('Data has been saved successfully!');
-        // store part 
-        Grade::create([
-          "Name"=>request("Name"),
-          "Notes" => $request->Notes
-        ]);
+      $request->validate([
+        "name" => "required",
+      ]);
+      
+      $grade = new Grade();
+      $grade->name = $request->name;
+      $grade->notes = $request->notes;
+      $grade->save();
+      
+ 
+      toastr()->success('Data has been saved successfully!');
+      
+      
     }catch(Exception $e){
-      flash()->fail($e);
+      toastr()->success("the data field " . $e);
     }
+  
+
     return redirect("grade");
     
   }
@@ -95,9 +93,19 @@ class GradeController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(Request $request)
   {
     
+    
+    
+    $grade = Grade::where("id" , $request->id)->first();
+    $grade->name = $request->name;
+    $grade->notes = $request->notes;
+    $grade->save();
+
+    toastr()->success("udapted successfully");
+
+    return redirect("grade");
   }
 
   /**
@@ -106,8 +114,11 @@ class GradeController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function destroy($id)
+  public function destroy(Request $request)
   {
+    $grade = Grade::where("id" , $request->id)->first();
+    $grade->delete();
+    return redirect("grade");
     
   }
   

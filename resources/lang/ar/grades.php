@@ -3,6 +3,8 @@
 return [
     'title_page' => 'المراحل الدراسية',
     'List_Grade' => 'قائمة المراحل الدراسية',
+    "update"=>"تحديث",
+    "delete"=>"حذف",
     'add_Grade' => 'اضافة مرحلة',
     'edit_Grade'=> 'تعديل مرحلة',
     'delete_Grade'=> 'حذف مرحلة',
