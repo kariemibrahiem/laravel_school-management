@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClassRequest;
 use App\Models\ClassRoom ;
 use App\Models\Grade;
 use Exception;
@@ -38,14 +39,12 @@ class ClassRoomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClassRequest $request)
     {
         // $attributes = request()->validate(['className' => 'required|unique_translation:class_rooms',]);
         // return $request;
 
         try{
-         
-            
             foreach($request->List_Classes as $list){
                 $class = new ClassRoom();
                 $class->className = $list["Name"];
@@ -54,7 +53,6 @@ class ClassRoomController extends Controller
             }
 
 
-            // flasher()->success("good");
           
         }catch(Exception $e){
             return redirect("classes")->withErrors("fial" .$e);
@@ -95,9 +93,10 @@ class ClassRoomController extends Controller
      */
     public function updateClass(Request $request)
     {
+        // return $request;
         $class = ClassRoom::where("id" , $request->id);
         $class->update([
-            "className" => $request->className,
+            "className" => $request->name,
             "grade_id"  => $request->grade_id 
         ]);
         return redirect("classes");
@@ -111,7 +110,11 @@ class ClassRoomController extends Controller
      */
     public function destroy(Request $request)
     {
+
+       
         ClassRoom::destroy($request->id);
+        
+        flash()->success('Operation completed successfully.');
         return redirect("classes");
     }
 }

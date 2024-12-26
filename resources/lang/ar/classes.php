@@ -33,6 +33,8 @@ return [
   'delete_class'=> 'حذف صف',
   'Warning_class'=> 'هل انت متاكد من عملية الحذف ؟',
   'stage_name' => 'اسم الصف بالعربية',
+  'unique_name' => 'اسم الصف موجود بالفعل',
+  'required_name' => 'اسم الصف  مطلوب',
   'stage_name_en' => 'اسم الصف بالانجليزية',
   'submit' => 'حفظ البيانات',
   'Name_class'=>'اسم الصف بالعربية',

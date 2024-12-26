@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreGrade;
+use App\Models\ClassRoom;
 use App\Models\Grade;
 use Exception;
 use Illuminate\Http\Request;
@@ -36,16 +37,16 @@ class GradeController extends Controller
    *
    * @return Response
    */
-  public function store(Request $request)
+  public function store(StoreGrade $request)
   {
     // $attributes = request()->validate(['name' => 'required|unique_translation:Grades',]);
     
     
     try{
 
-      $request->validate([
-        "name" => "required",
-      ]);
+      // $request->validate([
+      //   "name" => "required",
+      // ]);
       
       $grade = new Grade();
       $grade->name = $request->name;
@@ -57,10 +58,12 @@ class GradeController extends Controller
       
       
     }catch(Exception $e){
-      toastr()->success("the data field " . $e);
+      toastr()->error("the class deleted field" .$e);
+      return redirect("grade");
     }
   
 
+    toastr()->success("the class stored successfuly");
     return redirect("grade");
     
   }
@@ -116,8 +119,13 @@ class GradeController extends Controller
    */
   public function destroy(Request $request)
   {
-    $grade = Grade::where("id" , $request->id)->first();
-    $grade->delete();
+   $classes = ClassRoom::where("grade_id" , $request->id)->get() ;
+    foreach( $classes as $class) {
+      $class->delete();
+    }
+      $grade = Grade::where("id" , $request->id)->first();
+      $grade->delete();
+      toastr()->success("the class deleted successfuly");
     return redirect("grade");
     
   }

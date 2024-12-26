@@ -62,14 +62,17 @@
                     <th>{{ $class->className }}</th>
                     <th>{{ $class->grade->name }}</th>
                     <th>
-                        <button type="button" class="btn btn-success x-small" data-toggle="modal" data-target="#updateModel">
+                        {{-- <button type="button" class="btn btn-success x-small" data-toggle="modal" data-target="#updateModel">
                             {{ trans('grades.update') }}
-                        </button>
-                        <button type="button" class=" btn btn-danger x-small" data-toggle="modal" data-target="#deleteModel">
-                            {{ trans('grades.delete') }}
-                        </button>
+                        </button> --}}
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal" data-name="{{ $class->className }}" data-whatever="{{ $class->id }}">udpate</button>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" data-name="{{ $class->className }}" data-whatever="{{ $class->id }}" >delete</button>
+
+                       
                     </th>
                 </tr>
+
+
 
 
                     <!-- update_modal_Grade -->
@@ -249,55 +252,112 @@
 
 </div>
 
-      {{-- <!-- add_modal_Grade -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
-                    {{ trans('classes.Name_class') }}
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!-- add_form -->
-                <form action="{{ route("classes.store") }}" method="GET">
-                    @csrf
-                    <div class="row">
-                        <div class="col">
-                            <label for="Name" class="mr-sm-2">{{ trans('classes.Name_class') }}
-                                :</label>
-                            <input id="Name" type="text" name="className" class="form-control">
-                        </div>
-                        
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">{{ trans('Grades.add_Grade') }}
-                            :</label>
-                        <select name="grade_id" class="form-control" id="">
-                            @foreach ($grades as $grade)
-                                    <option class="form-control" value="{{ $grade->id }}">{{ $grade->name }}</option>
-                            @endforeach
-                        </select>
-                            
-                    </div>
-                    <br><br>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"
-                    data-dismiss="modal">{{ trans('Grades.Close') }}</button>
-                <button type="submit" class="btn btn-success">{{ trans('Grades.submit') }}</button>
-            </div>
-            </form>
 
+                {{-- update modal new  --}}
+                
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">update the class</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body">
+          <form action="{{ route("class.update") }}" method="GET">
+              <input type="hidden" class="form-control idInput" id="recipient-id" name="id">
+            <div class="form-group">
+              <label for="recipient-id" class="col-form-label">name of class:</label>
+              <input type="text" class="form-control nameInput" name="name" id="recipient-id">
+            </div>
+          <div>
+            <label for="fancyselect"> the grade of the class</label>
+            <select class="fancyselect form-control" name="grade_id">
+                @foreach ($grades as $Grade)
+                    <option value="{{ $Grade->id }}">{{ $Grade->name }}</option>
+                @endforeach
+            </select>
+          </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">update class</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-    </div> --}}
+  </div>
+
+
+
+                {{-- delete modal new  --}}
+                
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">delete the class</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="{{ route("class.delete") }}" method="GET">
+              <input type="hidden" class="form-control idInput" id="recipient-id" name="id">
+          
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-danger">delete class</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- row closed -->
 @endsection
 @section('js')
 
+<script>
+
+    $('#updateModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var id = button.data('whatever') // Extract info from data-* attributes
+        var name = button.data('name') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text("update the class of name :" + name)
+        modal.find('.modal-body .idInput').val(id)
+        modal.find('.modal-body .nameInput').val(name)
+    })
+    </script>
+<script>
+
+    $('#deleteModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var id = button.data('whatever') // Extract info from data-* attributes
+        var name = button.data('name') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text("delete the class of name :" + name)
+        modal.find('.modal-body .idInput').val(id)
+        modal.find('.modal-body .nameInput').val(name)
+    })
+    </script>
 @endsection

@@ -33,6 +33,8 @@ return [
     'delete_class'=> 'حذف صف',
     'Warning_Grade'=> 'هل انت متاكد من عملية الحذف ؟',
     'submit' => 'submit',
+    "unique_name"=> "the name is already exists",
+    "required_name"=> "the name is required",
     'Name_class'=>'Name_class_en',
     'Name_class'=>'Name class ',
     'Name_Grade'=>'Name Grade',
