@@ -13,11 +13,8 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="dashboard" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="index.html">Dashboard 01</a> </li>
-                            <li> <a href="index-02.html">Dashboard 02</a> </li>
-                            <li> <a href="index-03.html">Dashboard 03</a> </li>
-                            <li> <a href="index-04.html">Dashboard 04</a> </li>
-                            <li> <a href="index-05.html">Dashboard 05</a> </li>
+                            <li> <a href="{{ url("/dash") }}">Dashboard 01</a> </li>
+                          
                         </ul>
                     </li>
                     <!-- menu title -->
@@ -47,6 +44,20 @@
                         </a>
                         <ul id="classes" class="collapse" data-parent="#sidebarnav_2">
                             <li>  <a href="{{ url("classes") }}">{{ lang::get("classes.List_classes") }}</a></li>
+                         
+                        </ul>
+                    </li>
+                    {{--  --}}
+                    <li>
+                        <a href="javascript:void(1);" data-toggle="collapse" data-target="#sections">
+                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{ lang::get("Sections_trans.title_page") }}</span>
+                            </div>
+                            
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="sections" class="collapse" data-parent="#sidebarnav_2">
+                            <li>  <a href="{{ url("sections") }}">{{ lang::get("Sections_trans.title_page") }}</a></li>
                          
                         </ul>
                     </li>

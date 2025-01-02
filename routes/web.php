@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClassRoomController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\SectionsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -47,6 +48,11 @@ Route::middleware("auth")->group(function(){
 		Route::get("classes.store" , [ClassRoomController::class, "store"])->name("classes.store");
 		Route::get("classes.update" , [ClassRoomController::class, "updateClass"])->name("class.update");
 		Route::get("classes.delete" , [ClassRoomController::class, "destroy"])->name("class.delete");
+		
+		
+		// sections routes
+		Route::resource('sections', "SectionsController");
+        Route::get('getclasses/{id}', [SectionsController::class, "getclasses"]);
 		
 	});
 	

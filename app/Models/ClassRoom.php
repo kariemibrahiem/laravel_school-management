@@ -11,8 +11,19 @@ class ClassRoom extends Model
     
 
    
-    public function grade()
-    {
+    // public function grade()
+    // {
+    //     return $this->belongsTo('App\Models\Grade', 'Grade_id');
+    // }
+    public function grade(){
         return $this->belongsTo(Grade::class);
     }
+
+    public function sections(){
+        return $this->hasMany(Sections::class);
+    }
+
+    
+
+   
 }

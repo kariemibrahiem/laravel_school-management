@@ -254,9 +254,10 @@
                 <input type="hidden" class="form-control idInput" id="recipient-id" name="id">
                 
                 <div class="modal-footer">
-                <h5 class="modal-title text-danger" >after deleting the grade the all classes related will deleted</h5>
+                <label for="checkBTN" class="modal-title text-danger"  >after deleting the grade the all classes and sections related will deleted</label>
+                <input id="checkBTN" type="checkbox" onchange="toggleDeletion(this)">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-danger">delete class</button>
+                <button type="submit" id="deleteBTN" disabled  class="btn btn-danger">delete class</button>
             </div>
           </form>
         </div>
@@ -295,5 +296,12 @@
         modal.find('.modal-body .idInput').val(id)
         modal.find('.modal-body .nameInput').val(name)
     })
+    </script>
+    <script>
+         function toggleDeletion(check){
+            // const check = document.getElementById("checkBTN");
+            const btn = document.getElementById("deleteBTN");
+            btn.disabled = !check.checked;
+        }
     </script>
 @endsection

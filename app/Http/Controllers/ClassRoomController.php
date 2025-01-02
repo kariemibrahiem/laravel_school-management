@@ -117,4 +117,5 @@ class ClassRoomController extends Controller
         flash()->success('Operation completed successfully.');
         return redirect("classes");
     }
+   
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreGrade;
 use App\Models\ClassRoom;
 use App\Models\Grade;
+use App\Models\Sections;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -63,7 +64,7 @@ class GradeController extends Controller
     }
   
 
-    toastr()->success("the class stored successfuly");
+    // toastr()->success("the class stored successfuly");
     return redirect("grade");
     
   }
@@ -120,11 +121,19 @@ class GradeController extends Controller
   public function destroy(Request $request)
   {
    $classes = ClassRoom::where("grade_id" , $request->id)->get() ;
+   $sections = Sections::where("grade_id" , $request->id)->get();
+   
     foreach( $classes as $class) {
       $class->delete();
     }
+
+    foreach( $sections as $section) {
+      $section->delete();
+    }
+
       $grade = Grade::where("id" , $request->id)->first();
       $grade->delete();
+
       toastr()->success("the class deleted successfuly");
     return redirect("grade");
     
