@@ -12,6 +12,13 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
+
+		$this->call([
+			BloodSeeder::class,
+			NationalitiesSeeder::class,
+			ReligionSeeder::class
+		]);
+
 		User::create([
 			"name" => "admin",
 			"email"=> "admin@g.c",

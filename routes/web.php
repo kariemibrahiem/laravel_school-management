@@ -53,6 +53,12 @@ Route::middleware("auth")->group(function(){
 		// sections routes
 		Route::resource('sections', "SectionsController");
         Route::get('getclasses/{id}', [SectionsController::class, "getclasses"]);
+
+
+		// the parents routes
+		Route::resource("parents" , "MyparentController");
+		Route::view("addparents" , "livewire.showForm");
+
 		
 	});
 	

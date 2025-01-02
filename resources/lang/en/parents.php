@@ -5,6 +5,8 @@ return [
     'Step1' => 'Father information',
     'Step2' => 'Mother information',
     'Step3' => 'Confirm information',
+    "parentTitle"=>"the parents",
+    "addparentTitle"=>"add parents",
     'Email' => 'Email',
     'Password' => 'Password',
     'Name_Father' => 'Father Name Arabic',
