@@ -13,7 +13,7 @@ class BloodSeeder extends Seeder
      */
     public function run()
     {
-        DB::table("Blood_types")->truncate();
+        // DB::table("Blood_types")->truncate();
 
         $BTS = ["A-" , "B-" , "A+" , "B+" , "AB+" , "AB-" , "O+" , "O-" , ];
 

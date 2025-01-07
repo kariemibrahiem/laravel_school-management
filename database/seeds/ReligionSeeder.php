@@ -13,7 +13,7 @@ class ReligionSeeder extends Seeder
      */
     public function run()
     {
-        DB::table("Religions")->truncate();
+        // DB::table("Religions")->truncate();
 
         $religion = [
             "misilim",

@@ -18,13 +18,9 @@ class CreateMyparentsTable extends Migration
             $table->string("F_name");
             $table->string("F_email");
             $table->string("F_password");
-            $table->string("F_job");
-            $table->integer("F_national_id");
-            $table->integer("F_phone");
-            $table->string("F_nationality");
-            $table->string("F_blood_type");
-            $table->string("F_religion");
-            $table->string("F_address");
+            $table->string("F_job")->nullable();
+            $table->integer("F_phone")->nullable();
+            $table->string("F_address")->nullable();
             $table->unsignedBigInteger("F_blood_id");
             $table->unsignedBigInteger("F_nationality_id");
             $table->unsignedBigInteger("F_religion_id");
@@ -33,15 +29,9 @@ class CreateMyparentsTable extends Migration
             $table->foreign("F_religion_id")->references("id")->on("religions")->cascadeOnDelete();
         //    mother migrations database
             $table->string("M_name");
-            $table->string("M_email");
-            $table->string("M_password");
-            $table->string("M_job");
-            $table->integer("M_national_id");
-            $table->integer("M_phone");
-            $table->string("M_nationality");
-            $table->string("M_blood_type");
-            $table->string("M_religion");
-            $table->string("M_address");
+            $table->string("M_job")->nullable();
+            $table->integer("M_phone")->nullable();
+            $table->string("M_address")->nullable();
             $table->unsignedBigInteger("M_blood_id");
             $table->unsignedBigInteger("M_nationality_id");
             $table->unsignedBigInteger("M_religion_id");
