@@ -8,10 +8,12 @@ return [
     'Delete_Teacher'=>'Delete Teacher',
     'Email'=>'Email',
     'Password'=>'Password',
-    'Name_ar'=>'Name_ar',
+    'Name'=>'Name',
     'Name_en'=>'Name_en',
     'specialization'=>'specialization',
     'Gender'=>'Gender',
     'Joining_Date'=>'Joining_Date',
     'Address'=>'Address',
+    "males" => "male",
+    "females" => "female",
 ];

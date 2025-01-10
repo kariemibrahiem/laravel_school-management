@@ -2,9 +2,11 @@
 
 use App\Models\ClassRoom;
 use App\Models\Grade;
+use App\Models\Specialization;
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder {
 
@@ -12,12 +14,17 @@ class DatabaseSeeder extends Seeder {
 	{
 		// Model::unguard();
 
+		// DB::table("users")->delete();
+		// User::truncate();
 
 		$this->call([
 			BloodSeeder::class,
 			NationalitiesSeeder::class,
-			ReligionSeeder::class
+			ReligionSeeder::class,
+			// Specialization::class
 		]);
+
+
 
 		User::create([
 			"name" => "admin",
@@ -34,5 +41,8 @@ class DatabaseSeeder extends Seeder {
 			"className" => "main grade",
 			"grade_id" => $grade->id
 		]);
+
+
+	
 	}
 }

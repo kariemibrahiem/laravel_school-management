@@ -89,6 +89,34 @@
                          
                         </ul>
                     </li>
+                    {{-- teachets --}}
+                    <li>
+                        <a href="javascript:void(1);" data-toggle="collapse" data-target="#teachets">
+                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{ lang::get("Teachers.teachers") }}</span>
+                            </div>
+                            
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="teachets" class="collapse" data-parent="#sidebarnav_2">
+                            {{-- <li>
+                                <a href="
+                                {{url('parents')}}
+                                "><i class="fas fa-book-open"></i><span
+                                        class="right-nav-text">{{ lang::get("parents.parentTitle") }}</span></a>
+                            </li> --}}
+                            <li>
+                                <a href="
+                                {{url('teachers')}}
+                                "><i class="fas fa-book-open"></i><span
+                                        class="right-nav-text">{{ lang::get("Teachers.teachers") }}</span></a>
+                            </li>
+                    
+                    
+                           
+                         
+                        </ul>
+                    </li>
                     {{-- the student section --}}
                     <li>
                         <a href="javascript:void(1);" data-toggle="collapse" data-target="#students">

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClassRoomController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\SectionsController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -37,19 +38,19 @@ Route::middleware("auth")->group(function(){
 		{
 			return View("dashboard");
 		})->middleware("auth");
-		
+
 		Route::resource("grade" , "GradeController")->middleware("auth");
 		Route::get("grade.store" , [GradeController::class, "store"])->name("grade.store");
 		Route::get("grade.update" , [GradeController::class, "update"])->name("grade.update");
 		Route::get("grade.delete" , [GradeController::class, "destroy"])->name("grade.delete");
-		
+
 		// calss routes
 		Route::resource("classes" , "ClassRoomController");
 		Route::get("classes.store" , [ClassRoomController::class, "store"])->name("classes.store");
 		Route::get("classes.update" , [ClassRoomController::class, "updateClass"])->name("class.update");
 		Route::get("classes.delete" , [ClassRoomController::class, "destroy"])->name("class.delete");
-		
-		
+
+
 		// sections routes
 		Route::resource('sections', "SectionsController");
         Route::get('getclasses/{id}', [SectionsController::class, "getclasses"]);
@@ -59,11 +60,19 @@ Route::middleware("auth")->group(function(){
 		Route::resource("parents" , "MyparentController");
 		Route::view("addparents" , "livewire.showForm");
 
-		
+		// the teachers route
+        Route::get("teachers.updates" , [TeacherController::class, "update"])->name("teachers.updates");
+		Route::resource("teachers" , "TeacherController");
+        Route::get("teachers.create" , [TeacherController::class, "create"])->name("teachers.create");
+        Route::get("teachers.store" , [TeacherController::class, "store"])->name("teachers.store");
+        Route::get("teachers.destroy" , [TeacherController::class, "destroy"])->name("teachers.destroy");
+        Route::get("teachers.edit" , [TeacherController::class, "edit"])->name("teachers.edit");
+
+
 	});
-	
+
 });
-	
+
 	/** OTHER PAGES THAT SHOULD NOT BE LOCALIZED **/
 // Route::resource('grade', 'GradeController');
 

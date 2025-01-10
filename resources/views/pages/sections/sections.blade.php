@@ -1,16 +1,16 @@
 @extends('layouts.master')
 @section('css')
     @toastr_css
-@section('title')
-    {{ trans('Sections_trans.title_page') }}
-@stop
+    @section('title')
+        {{ trans('Sections_trans.title_page') }}
+    @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
-@section('PageTitle')
-    {{ trans('Sections_trans.title_page') }}
-@stop
-<!-- breadcrumb -->
+    @section('PageTitle')
+        {{ trans('Sections_trans.title_page') }}
+    @stop
+    <!-- breadcrumb -->
 @endsection
 @section('content')
     <!-- row -->
@@ -66,194 +66,149 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <?php $i = 0; ?>
-                                                                
-                                                                
+                                                                    <?php $i = 0; ?>
+
+
                                                                 @foreach ($sections as $list_Sections)
-                                                                @if ($list_Sections->grade_id == $Grade->id)
-                                                                <tr>
-                                                                    <?php $i++; ?>
-                                                                    <td>{{ $i }}</td>
-                                                                    <td>{{ $list_Sections->Name_Section	 }}</td>
-                                                                    <td>{{ $list_Sections->class->className }}
-                                                                    </td>
-                                                                    <td>
-                                                                        @if ($list_Sections->Status === 1)
-                                                                            <label
-                                                                                class="badge badge-success">{{ trans('Sections_trans.Status_Section_AC') }}</label>
-                                                                        @else
-                                                                            <label
-                                                                                class="badge badge-danger">{{ trans('Sections_trans.Status_Section_No') }}</label>
-                                                                        @endif
+                                                                    @if ($list_Sections->grade_id == $Grade->id)
+                                                                        <tr>
+                                                                                <?php $i++; ?>
+                                                                            <td>{{ $i }}</td>
+                                                                            <td>{{ $list_Sections->Name_Section	 }}</td>
+                                                                            <td>{{ $list_Sections->class->className }}
+                                                                            </td>
+                                                                            <td>
+                                                                                @if ($list_Sections->Status === 1)
+                                                                                    <label
+                                                                                        class="badge badge-success">{{ trans('Sections_trans.Status_Section_AC') }}</label>
+                                                                                @else
+                                                                                    <label
+                                                                                        class="badge badge-danger">{{ trans('Sections_trans.Status_Section_No') }}</label>
+                                                                                @endif
 
-                                                                    </td>
-                                                                    <td>
+                                                                            </td>
+                                                                            <td>
 
-                                                                        <a href="#"
-                                                                           class="btn btn-outline-info btn-sm"
-                                                                           data-toggle="modal"
-                                                                           data-target="#edit{{ $list_Sections->id }}">{{ trans('Sections_trans.Edit') }}</a>
-                                                                        <a href="#"
-                                                                           class="btn btn-outline-danger btn-sm"
-                                                                           data-toggle="modal"
-                                                                           data-target="#delete{{ $list_Sections->id }}">{{ trans('Sections_trans.Delete') }}</a>
-                                                                    </td>
-                                                                </tr>
+                                                                                <a href="#"
+                                                                                   class="btn btn-outline-info btn-sm"
+                                                                                   data-toggle="modal"
+                                                                                   data-target="#edit{{ $list_Sections->id }}">{{ trans('Sections_trans.Edit') }}</a>
+                                                                                <a href="#"
+                                                                                   class="btn btn-outline-danger btn-sm"
+                                                                                   data-toggle="modal"
+                                                                                   data-target="#delete{{ $list_Sections->id }}">{{ trans('Sections_trans.Delete') }}</a>
+                                                                            </td>
+                                                                        </tr>
 
 
-                                                                <!--تعديل قسم جديد -->
-                                                                <div class="modal fade"
-                                                                     id="edit{{ $list_Sections->id }}"
-                                                                     tabindex="-1" role="dialog"
-                                                                     aria-labelledby="exampleModalLabel"
-                                                                     aria-hidden="true">
-                                                                    <div class="modal-dialog" role="document">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    style="font-family: 'Cairo', sans-serif;"
-                                                                                    id="exampleModalLabel">
-                                                                                    {{ trans('Sections_trans.edit_Section') }}
-                                                                                </h5>
-                                                                                <button type="button" class="close"
-                                                                                        data-dismiss="modal"
-                                                                                        aria-label="Close">
+                                                                        <!--تعديل قسم جديد -->
+                                                                        <div class="modal fade"
+                                                                             id="edit{{ $list_Sections->id }}"
+                                                                             tabindex="-1" role="dialog"
+                                                                             aria-labelledby="exampleModalLabel"
+                                                                             aria-hidden="true">
+                                                                            <div class="modal-dialog" role="document">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <h5 class="modal-title"
+                                                                                            style="font-family: 'Cairo', sans-serif;"
+                                                                                            id="exampleModalLabel">
+                                                                                            {{ trans('Sections_trans.edit_Section') }}
+                                                                                        </h5>
+                                                                                        <button type="button" class="close"
+                                                                                                data-dismiss="modal"
+                                                                                                aria-label="Close">
                                                                                 <span
                                                                                     aria-hidden="true">&times;</span>
-                                                                                </button>
-                                                                            </div>
-                                                                            <div class="modal-body">
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
 
-                                                                                <form
-                                                                                    action="{{ route('sections.update', 'test') }}"
-                                                                                    method="POST">
-                                                                                    {{ method_field('patch') }}
-                                                                                    {{ csrf_field() }}
-                                                                                    <div class="row">
-                                                                                        <div class="col">
-                                                                                            <input type="text"
-                                                                                                   name="section_name"
-                                                                                                   class="form-control"
-                                                                                                   value="{{ $list_Sections->getTranslation('Name_Section', 'ar') }}">
-                                                                                        </div>
+                                                                                        <form
+                                                                                            action="{{ route('sections.update', 'test') }}"
+                                                                                            method="POST">
+                                                                                            {{ method_field('patch') }}
+                                                                                            {{ csrf_field() }}
+                                                                                            <div class="row">
+                                                                                                <div class="col">
+                                                                                                    <input type="text"
+                                                                                                           name="section_name"
+                                                                                                           class="form-control"
+                                                                                                           value="{{ $list_Sections->getTranslation('Name_Section', 'ar') }}">
+                                                                                                </div>
 
-                                                                                        <div class="col">
-                                                                                          
-                                                                                            <input id="id"
-                                                                                                   type="hidden"
-                                                                                                   name="id"
-                                                                                                   class="form-control"
-                                                                                                   value="{{ $list_Sections->id }}">
-                                                                                        </div>
+                                                                                                <div class="col">
+
+                                                                                                    <input id="id"
+                                                                                                           type="hidden"
+                                                                                                           name="id"
+                                                                                                           class="form-control"
+                                                                                                           value="{{ $list_Sections->id }}">
+                                                                                                </div>
+
+                                                                                            </div>
+                                                                                            <br>
+
+
+                                                                                            <div class="col">
+                                                                                                <label for="inputName"
+                                                                                                       class="control-label">{{ trans('Sections_trans.Name_Grade') }}</label>
+                                                                                                <select name="grade_id"
+                                                                                                        class="custom-select"
+                                                                                                        onclick="console.log($(this).val())">
+                                                                                                    <!--placeholder-->
+                                                                                                    <option
+                                                                                                        value="{{ $Grade->id }}">
+                                                                                                        {{ $Grade->name }}
+                                                                                                    </option>
+                                                                                                    @foreach ($list_Grades as $list_Grade)
+                                                                                                        <option
+                                                                                                            value="{{ $list_Grade->id }}">
+                                                                                                            {{ $list_Grade->name }}
+                                                                                                        </option>
+                                                                                                    @endforeach
+                                                                                                </select>
+                                                                                            </div>
+                                                                                            <br>
+
+                                                                                            <div class="col">
+                                                                                                <label for="inputName"
+                                                                                                       class="control-label">{{ trans('Sections_trans.Name_Class') }}</label>
+                                                                                                <select name="class_id"
+                                                                                                        class="custom-select">
+                                                                                                    <option
+                                                                                                        value="{{ $list_Sections->class->id }}">
+                                                                                                        {{ $list_Sections->class->className }}
+                                                                                                    </option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                            <br>
+
+                                                                                            <div class="col">
+                                                                                                <div class="form-check">
+
+                                                                                                    @if ($list_Sections->Status === 1)
+                                                                                                        <input
+                                                                                                            type="checkbox"
+                                                                                                            checked
+                                                                                                            class="form-check-input"
+                                                                                                            name="Status"
+                                                                                                            id="exampleCheck1">
+                                                                                                    @else
+                                                                                                        <input
+                                                                                                            type="checkbox"
+                                                                                                            class="form-check-input"
+                                                                                                            name="Status"
+                                                                                                            id="exampleCheck1">
+                                                                                                    @endif
+                                                                                                    <label
+                                                                                                        class="form-check-label"
+                                                                                                        for="exampleCheck1">{{ trans('Sections_trans.Status') }}</label>
+                                                                                                </div>
+                                                                                            </div>
+
 
                                                                                     </div>
-                                                                                    <br>
-
-
-                                                                                    <div class="col">
-                                                                                        <label for="inputName"
-                                                                                               class="control-label">{{ trans('Sections_trans.Name_Grade') }}</label>
-                                                                                        <select name="grade_id"
-                                                                                                class="custom-select"
-                                                                                                onclick="console.log($(this).val())">
-                                                                                            <!--placeholder-->
-                                                                                            <option
-                                                                                                value="{{ $Grade->id }}">
-                                                                                                {{ $Grade->name }}
-                                                                                            </option>
-                                                                                            @foreach ($list_Grades as $list_Grade)
-                                                                                                <option
-                                                                                                    value="{{ $list_Grade->id }}">
-                                                                                                    {{ $list_Grade->name }}
-                                                                                                </option>
-                                                                                            @endforeach
-                                                                                        </select>
-                                                                                    </div>
-                                                                                    <br>
-
-                                                                                    <div class="col">
-                                                                                        <label for="inputName"
-                                                                                               class="control-label">{{ trans('Sections_trans.Name_Class') }}</label>
-                                                                                        <select name="class_id"
-                                                                                                class="custom-select">
-                                                                                            <option
-                                                                                                value="{{ $list_Sections->class->id }}">
-                                                                                                {{ $list_Sections->class->className }}
-                                                                                            </option>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                    <br>
-
-                                                                                    <div class="col">
-                                                                                        <div class="form-check">
-
-                                                                                            @if ($list_Sections->Status === 1)
-                                                                                                <input
-                                                                                                    type="checkbox"
-                                                                                                    checked
-                                                                                                    class="form-check-input"
-                                                                                                    name="Status"
-                                                                                                    id="exampleCheck1">
-                                                                                            @else
-                                                                                                <input
-                                                                                                    type="checkbox"
-                                                                                                    class="form-check-input"
-                                                                                                    name="Status"
-                                                                                                    id="exampleCheck1">
-                                                                                            @endif
-                                                                                            <label
-                                                                                                class="form-check-label"
-                                                                                                for="exampleCheck1">{{ trans('Sections_trans.Status') }}</label>
-                                                                                        </div>
-                                                                                    </div>
-
-
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                        class="btn btn-secondary"
-                                                                                        data-dismiss="modal">{{ trans('Sections_trans.Close') }}</button>
-                                                                                <button type="submit"
-                                                                                        class="btn btn-danger">{{ trans('Sections_trans.submit') }}</button>
-                                                                            </div>
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-                                                                <!-- delete_modal_Grade -->
-                                                                <div class="modal fade"
-                                                                     id="delete{{ $list_Sections->id }}"
-                                                                     tabindex="-1" role="dialog"
-                                                                     aria-labelledby="exampleModalLabel"
-                                                                     aria-hidden="true">
-                                                                    <div class="modal-dialog" role="document">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 style="font-family: 'Cairo', sans-serif;"
-                                                                                    class="modal-title"
-                                                                                    id="exampleModalLabel">
-                                                                                    {{ trans('Sections_trans.delete_Section') }}
-                                                                                </h5>
-                                                                                <button type="button" class="close"
-                                                                                        data-dismiss="modal"
-                                                                                        aria-label="Close">
-                                                                                <span
-                                                                                    aria-hidden="true">&times;</span>
-                                                                                </button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <form
-                                                                                    action="{{ route('sections.destroy', 'test') }}"
-                                                                                    method="post">
-                                                                                    {{ method_field('Delete') }}
-                                                                                    @csrf
-                                                                                    {{ trans('Sections_trans.Warning_Section') }}
-                                                                                    <input id="id" type="hidden"
-                                                                                           name="id"
-                                                                                           class="form-control"
-                                                                                           value="{{ $list_Sections->id }}">
                                                                                     <div class="modal-footer">
                                                                                         <button type="button"
                                                                                                 class="btn btn-secondary"
@@ -261,19 +216,64 @@
                                                                                         <button type="submit"
                                                                                                 class="btn btn-danger">{{ trans('Sections_trans.submit') }}</button>
                                                                                     </div>
-                                                                                </form>
+                                                                                    </form>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
+
+
+                                                                        <!-- delete_modal_Grade -->
+                                                                        <div class="modal fade"
+                                                                             id="delete{{ $list_Sections->id }}"
+                                                                             tabindex="-1" role="dialog"
+                                                                             aria-labelledby="exampleModalLabel"
+                                                                             aria-hidden="true">
+                                                                            <div class="modal-dialog" role="document">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <h5 style="font-family: 'Cairo', sans-serif;"
+                                                                                            class="modal-title"
+                                                                                            id="exampleModalLabel">
+                                                                                            {{ trans('Sections_trans.delete_Section') }}
+                                                                                        </h5>
+                                                                                        <button type="button" class="close"
+                                                                                                data-dismiss="modal"
+                                                                                                aria-label="Close">
+                                                                                <span
+                                                                                    aria-hidden="true">&times;</span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <form
+                                                                                            action="{{ route('sections.destroy', 'test') }}"
+                                                                                            method="post">
+                                                                                            {{ method_field('Delete') }}
+                                                                                            @csrf
+                                                                                            {{ trans('Sections_trans.Warning_Section') }}
+                                                                                            <input id="id" type="hidden"
+                                                                                                   name="id"
+                                                                                                   class="form-control"
+                                                                                                   value="{{ $list_Sections->id }}">
+                                                                                            <div class="modal-footer">
+                                                                                                <button type="button"
+                                                                                                        class="btn btn-secondary"
+                                                                                                        data-dismiss="modal">{{ trans('Sections_trans.Close') }}</button>
+                                                                                                <button type="submit"
+                                                                                                        class="btn btn-danger">{{ trans('Sections_trans.submit') }}</button>
+                                                                                            </div>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
 
 
 
 
-                                                                @endif
-                                                            @endforeach
-                                                                    
-                                                                  
+                                                                    @endif
+                                                                @endforeach
+
+
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -311,7 +311,7 @@
                                                        placeholder="{{ trans('Sections_trans.Section_name_ar') }}">
                                             </div>
 
-                                        
+
 
                                         </div>
                                         <br>
@@ -342,6 +342,32 @@
                                             </select>
                                         </div>
 
+                                        <br>
+
+{{--                                        <div class="col">--}}
+{{--                                            <label for="inputName"--}}
+{{--                                                   class="control-label">name {{ trans('Teachers.teachers') }}</label>--}}
+{{--                                            <select name="teacher_id" class="custom-select"--}}
+{{--                                                    onchange="console.log($(this).val())">--}}
+{{--                                                <!--placeholder-->--}}
+{{--                                                --}}{{--                                                <option value="" selected--}}
+{{--                                                --}}{{--                                                        disabled>{{ trans('Sections_trans.Select_Grade') }}--}}
+{{--                                                --}}{{--                                                </option>--}}
+{{--                                                @foreach ($teachers as $teacher)--}}
+{{--                                                    <option value="{{ $teacher->id }}"> {{ $teacher->name }}--}}
+{{--                                                    </option>--}}
+{{--                                                @endforeach--}}
+{{--                                            </select>--}}
+{{--                                        </div>--}}
+                                        <div class="col">
+                                            <label for="inputName" class="control-label">{{ trans('sections.Name_Teacher') }}</label>
+                                            <select multiple name="teacher_id[]" class="form-control" id="exampleFormControlSelect2">
+                                                @foreach($teachers as $teacher)
+                                                    <option value="{{$teacher->id}}">{{$teacher->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
 
                                 </div>
                                 <div class="modal-footer">
@@ -366,7 +392,7 @@
             <script>
                 $(document).ready(function () {
                     $('select[name="Grade_id"]').on('change', function () {
-                      var Grade_id = $(this).val();
+                        var Grade_id = $(this).val();
                         if (Grade_id) {
                             $.ajax({
                                 url: "{{ URL::to('getclasses') }}/" + Grade_id,

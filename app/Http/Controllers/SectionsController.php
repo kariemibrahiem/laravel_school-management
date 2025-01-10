@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ClassRoom;
 use App\Models\Grade;
 use App\Models\Sections;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class SectionsController extends Controller
@@ -17,15 +18,16 @@ class SectionsController extends Controller
     public function index()
     {
 
-        
+
     $Grades = Grade::with(['Sections'])->get();
     $sections = Sections::all();
     $list_Grades = Grade::all();
+    $teachers = Teacher::all();
 
-    return view('pages.Sections.Sections',compact('Grades','list_Grades' , "sections"));
+    return view('pages.Sections.Sections',compact('Grades','list_Grades' , "sections" , "teachers"));
     }
 
-    // the ajax classes controller 
+    // the ajax classes controller
     public function getclasses($id)
     {
         $list_classes = ClassRoom::where("grade_id", $id)->get();
@@ -61,6 +63,7 @@ class SectionsController extends Controller
         $section->Grade_id = $request["Grade_id"];
         $section->Class_id = $request["Class_id"];
         $section->save();
+        $section->Teachers()->attach($request->teacher_id);
 
         toastr()->success("the store was successfull");
         return redirect("sections");

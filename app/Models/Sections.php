@@ -11,12 +11,12 @@ class Sections extends Model
     // public $translatable = ['Name_Section'];
     // protected $fillable=['Name_Section','Grade_id','Class_id'];
 
-   
+
     // public function class()
     // {
     //     return $this->belongsTo('App\Models\ClassRoom', 'id');
     // }
-    
+
     // public function My_classs()
     // {
     //     return $this->belongsTo('App\Models\Classroom', 'Class_id');
@@ -38,5 +38,11 @@ class Sections extends Model
     public function class()
     {
         return $this->belongsTo(ClassRoom::class);
+    }
+
+    public function Teachers()
+    {
+        return $this->belongsToMany(Teacher::class , "section_teacher");
+
     }
 }
