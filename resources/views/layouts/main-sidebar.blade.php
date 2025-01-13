@@ -128,142 +128,17 @@
                         </a>
                         <ul id="students" class="collapse" data-parent="#sidebarnav_2">
                             <li>
-                                <a href="
-                                {{-- {{route('student_exams.index')}} --}}
-                                "><i class="fas fa-book-open"></i><span
-                                        class="right-nav-text">الامتحانات</span></a>
+                                <a href="{{ url("students") }}"><i class="fas fa-book-open"></i><span
+                                        class="right-nav-text">{{ trans("main_trans.students") }}</span></a>
                             </li>
-                    
-                    
-                            <!-- Settings-->
                             <li>
-                                <a href="
-                                {{-- {{route('profile-student.index')}} --}}
-                                "><i class="fas fa-id-card-alt"></i><span
-                                        class="right-nav-text">الملف الشخصي</span></a>
+                                <a href="{{ route("students.create") }}"><i class="fas fa-book-open"></i><span
+                                        class="right-nav-text">{{ trans("main_trans.add_student") }}</span></a>
                             </li>
-                         
                         </ul>
                     </li>
-                    <li>
-                        <a href="javascript:void(1);" data-toggle="collapse" data-target="#teachers">
-                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{ lang::get("Teachers.teachers") }}</span>
-                            </div>
-                            
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="teachers" class="collapse" data-parent="#sidebarnav_2">
-                            <li>
-                                <a href="{{('sections')}}"><i class="fas fa-chalkboard"></i><span
-                                        class="right-nav-text">الاقسام</span></a>
-                            </li>
-                    
-                            <!-- الطلاب-->
-                            <li>
-                                <a href="{{('student.index')}}"><i class="fas fa-user-graduate"></i><span
-                                        class="right-nav-text">الطلاب</span></a>
-                            </li>
-                    
-                            <!-- الاختبارات-->
-                            <li>
-                                <a href="javascript:void(0);" data-toggle="collapse" data-target="#sections-menu">
-                                    <div class="pull-left"><i class="fas fa-chalkboard"></i><span
-                                            class="right-nav-text">الاختبارات</span></div>
-                                    <div class="pull-right"><i class="ti-plus"></i></div>
-                                    <div class="clearfix"></div>
-                                </a>
-                                <ul id="sections-menu" class="collapse" data-parent="#sidebarnav">
-                                    <li><a href="{{('quizzes.index')}}">قائمة الاختبارات</a></li>
-                                    <li><a href="#">قائمة الاسئلة</a></li>
-                                </ul>
-                    
-                            </li>
-                    
-                    
-                            <!-- Online classes-->
-                            <li>
-                                <a href="javascript:void(0);" data-toggle="collapse" data-target="#Onlineclasses-icon">
-                                    <div class="pull-left"><i class="fas fa-video"></i><span class="right-nav-text">{{trans('main_trans.Onlineclasses')}}</span></div>
-                                    <div class="pull-right"><i class="ti-plus"></i></div>
-                                    <div class="clearfix"></div>
-                                </a>
-                                <ul id="Onlineclasses-icon" class="collapse" data-parent="#sidebarnav">
-                                    <li> <a href="{{('online_zoom_classes.index')}}">حصص اونلاين مع زوم</a> </li>
-                                </ul>
-                            </li>
-                    
-                    
-                    
-                            <!-- sections-->
-                            <li>
-                                <a href="javascript:void(0);" data-toggle="collapse" data-target="#sections-menu1">
-                                    <div class="pull-left"><i class="fas fa-chalkboard"></i><span
-                                            class="right-nav-text">التقارير</span></div>
-                                    <div class="pull-right"><i class="ti-plus"></i></div>
-                                    <div class="clearfix"></div>
-                                </a>
-                                <ul id="sections-menu1" class="collapse" data-parent="#sidebarnav">
-                                    <li><a href="{{('attendance.report')}}">تقرير الحضور والغياب</a></li>
-                                    <li><a href="#">تقرير الامتحانات</a></li>
-                                </ul>
-                    
-                            </li>
-                    
-                            <!-- الملف الشخصي-->
-                            <li>
-                                <a href="{{('profile.show')}}"><i class="fas fa-id-card-alt"></i><span
-                                        class="right-nav-text">الملف الشخصي</span></a>
-                            </li>
-                    
-                         
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(1);" data-toggle="collapse" data-target="#parents">
-                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{trans('main_trans.Programname')}}</span>
-
-                            </div>
-                            
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="parents" class="collapse" data-parent="#sidebarnav_2">
-                            <li>
-                                <a href="
-                                {{-- {{route('sons.index')}} --}}
-                                "><i class="fas fa-book-open"></i><span
-                                        class="right-nav-text">الابناء</span></a>
-                            </li>
-                    
-                            <!-- تقرير الحضور والغياب-->
-                            <li>
-                                <a href="
-                                {{-- {{route('student_exams.index')}} --}}
-                                "><i class="fas fa-book-open"></i><span
-                                        class="right-nav-text">تقرير الحضور والغياب</span></a>
-                            </li>
-                    
-                            <!-- تقرير المالية-->
-                            <li>
-                                <a href="
-                                {{-- {{route('student_exams.index')}} --}}
-                                "><i class="fas fa-book-open"></i><span
-                                        class="right-nav-text">تقرير المالية</span></a>
-                            </li>
-                    
-                    
-                            <!-- Settings-->
-                            <li>
-                                <a href="
-                                {{-- {{route('profile-student.index')}} --}}
-                                "><i class="fas fa-id-card-alt"></i><span
-                                        class="right-nav-text">الملف الشخصي</span></a>
-                            </li>
-                    
-                         
-                        </ul>
-                    </li>
+                  
+               
                     <!-- menu item calendar-->
                 
                     <!-- menu item table -->

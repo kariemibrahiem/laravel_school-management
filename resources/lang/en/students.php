@@ -3,9 +3,10 @@
 return [
 
     'personal_information' => 'personal information',
+    "add_student"=>"add student",
     "students" => "students",
     'name' => 'Name',
-    'name_ar' => 'name_ar',
+    'name_ar' => 'name',
     'name_en' => 'name_en',
     'email' => 'email',
     'password' => 'password',

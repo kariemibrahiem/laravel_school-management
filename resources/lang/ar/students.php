@@ -3,6 +3,7 @@
 return [
 
     'personal_information' => 'المعلومات الشخصية',
+    'add_student' => ' اضافه طالب',
     "students" => "الطلاب",
     'name' => 'اسم الطالب',
     'name_ar' => 'الاسم باللغة العربية',

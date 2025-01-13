@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
 use App\Models\Sections;
-class Grade extends Model 
+class Grade extends Model
 {
     //     use  HasTranslations;
 
@@ -29,7 +29,7 @@ class Grade extends Model
     //     return $this->hasMany('App\Models\Sections', 'Grade_id');
     // }
 
-    
+
     use HasTranslations;
     public $translatable = ['Name'];
 
@@ -46,5 +46,10 @@ class Grade extends Model
 
     public function classes(){
         return $this->hasMany(ClassRoom::class);
+    }
+
+    public function Students()
+    {
+        return $this->hasMany(Student::class);
     }
 }

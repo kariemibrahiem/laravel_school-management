@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClassRoomController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\SectionsController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -67,6 +68,19 @@ Route::middleware("auth")->group(function(){
         Route::get("teachers.store" , [TeacherController::class, "store"])->name("teachers.store");
         Route::get("teachers.destroy" , [TeacherController::class, "destroy"])->name("teachers.destroy");
         Route::get("teachers.edit" , [TeacherController::class, "edit"])->name("teachers.edit");
+
+		// students routes
+
+		Route::resource('students', "StudentController");
+		Route::get("students.create" , [StudentController::class , "create"])->name("students.create");
+		Route::get("Students.store" , [StudentController::class , "store"])->name("Students.store");
+		Route::get('/Get_classrooms/{id}', 'StudentController@Get_classrooms');
+		Route::get('/Get_Sections/{id}', 'StudentController@Get_Sections');
+        Route::get("student.edit" , "StudentController@edit")->name("student.edit");
+        Route::get("student.update" , "StudentController@update")->name("student.update");
+        Route::get("student.destroy" , "StudentController@destroy")->name("student.destroy");
+
+
 
 
 	});
