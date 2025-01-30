@@ -8,6 +8,19 @@ return [
     "new_grades"=>"new grades",
     "old_grades"=>"old grades",
     "promotions" => " upgrade students",
+
+    "prev_grade" => " the old grade",
+    "prev_class" => " the old class",
+    "prev_section" => " the old section",
+
+    "next_grade" => " the new grade",
+    "next_class" =>" the new class",
+    "next_section" =>" the new section",
+
+    "prev_year" => "old year",
+    "next_year" => "new year",
+
+    "promotions_create" => " create upgrades",
     'name' => 'Name',
     'name_ar' => 'name',
     'name_en' => 'name_en',
@@ -36,6 +49,7 @@ return [
     'created_at' => 'created_at',
     'Download' => 'Download',
     'delete' => 'Delete',
+    'delete_all' => 'delete all',
     "success"=>"good boooy"
 
 ];

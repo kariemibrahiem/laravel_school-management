@@ -62,7 +62,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="academic_year">{{trans('students.academic_year')}} : <span class="text-danger">*</span></label>
-                                    <select class="custom-select mr-sm-2" name="academic_year">
+                                    <select class="custom-select mr-sm-2" name="from_year">
                                         <option selected disabled>{{trans('Parents.Choose')}}...</option>
                                         @php
                                             $current_year = date("Y");
@@ -105,7 +105,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="academic_year">{{trans('students.academic_year')}} : <span class="text-danger">*</span></label>
-                                    <select class="custom-select mr-sm-2" name="academic_year">
+                                    <select class="custom-select mr-sm-2" name="to_year">
                                         <option selected disabled>{{trans('Parents.Choose')}}...</option>
                                         @php
                                             $current_year = date("Y");

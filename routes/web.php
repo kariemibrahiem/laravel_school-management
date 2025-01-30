@@ -89,10 +89,10 @@ Route::middleware("auth")->group(function(){
         Route::get("promotions" , "PromotionController@index")->name("promotions.index");
         Route::get("promotions.create" , "PromotionController@create")->name("promotions.create");
         Route::get("promotion.store" , "PromotionController@store")->name("promotion.store");
+        Route::get("promotions.destroy" , "PromotionController@destroy")->name("promotions.destroy");
 
 //        Route::get("promotions.edit" , "PromotionController@edit")->name("promotions.edit");
 //        Route::get("promotions.update" , "PromotionController@update")->name("promotions.update");
-//        Route::get("promotions.destroy" , "PromotionController@destroy")->name("promotions.destroy");
 
 
 

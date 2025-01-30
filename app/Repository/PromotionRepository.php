@@ -54,6 +54,42 @@ class PromotionRepository implements PromotionRepositoryInterface
     }
 
     public function create(){
-        return "the mian interfce";
+        $promotions  = Promotion::all();
+        return view("pages.promotions.management" , compact("promotions"));
+    }
+
+    public function destroy($request){
+        DB::beginTransaction();
+        try{
+
+            if ($request->promotion_id == 1){
+                $Promotions = Promotion::all();
+                foreach ($Promotions as $Promotion) {
+
+                    //التحديث في جدول الطلاب
+                    $ids = explode(',', $Promotion->student_id);
+                    Student::whereIn('id', $ids)
+                        ->update([
+                            'Grade_id' => $Promotion->from_grade ,
+                            'Classroom_id' => $Promotion->from_class_room ,
+                            'section_id' => $Promotion->from_section ,
+                            'academic_year' => $Promotion->from_year,
+                        ]);
+
+                    //حذف جدول الترقيات
+                    Promotion::truncate();
+
+                    DB::commit();
+                    toastr()->success("the proccess success");
+            }
+            }else{
+                return "2";
+
+            }
+        }catch (\Exception $e){
+            DB::rollBack();
+            toastr()->error("dont work");
+        }
+        return redirect("students");
     }
 }

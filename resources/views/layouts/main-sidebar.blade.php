@@ -139,6 +139,10 @@
                                 <a href="{{ route("promotions.index") }}"><i class="fas fa-book-open"></i><span
                                         class="right-nav-text">{{ trans("students.promotions") }}</span></a>
                             </li>
+                            <li>
+                                <a href="{{ route("promotions.create") }}"><i class="fas fa-book-open"></i><span
+                                        class="right-nav-text">{{ trans("students.promotions_create") }}</span></a>
+                            </li>
                         </ul>
                     </li>
 

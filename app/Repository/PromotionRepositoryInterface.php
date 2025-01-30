@@ -8,4 +8,6 @@ interface PromotionRepositoryInterface
 
     public function create();
 
+    public function destroy($request);
+
 }
