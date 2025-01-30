@@ -97,7 +97,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dragonmantank/cron-expression" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/theseer/tokenizer" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/dnoegel/php-xdg-base-dir" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/egulias/email-validator" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpdocumentor/type-resolver" />
@@ -122,8 +121,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/clock" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-factory" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-translatable" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php81" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yoeunes/toastr" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php81" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

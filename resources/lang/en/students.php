@@ -5,6 +5,9 @@ return [
     'personal_information' => 'personal information',
     "add_student"=>"add student",
     "students" => "students",
+    "new_grades"=>"new grades",
+    "old_grades"=>"old grades",
+    "promotions" => " upgrade students",
     'name' => 'Name',
     'name_ar' => 'name',
     'name_en' => 'name_en',
@@ -33,5 +36,6 @@ return [
     'created_at' => 'created_at',
     'Download' => 'Download',
     'delete' => 'Delete',
+    "success"=>"good boooy"
 
 ];

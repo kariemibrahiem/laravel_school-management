@@ -5,11 +5,13 @@ namespace App\Repository;
 use App\Models\Blood_type;
 use App\Models\ClassRoom;
 use App\Models\Grade;
+use App\Models\Image;
 use App\Models\Myparent;
 use App\Models\Nationalities;
 use App\Models\Sections;
 use App\Models\Student;
 use Exception;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class studentRepository implements studentRepositoryInterface
@@ -25,6 +27,8 @@ class studentRepository implements studentRepositoryInterface
     }
 
     public function getAll(){
+
+
         $students = Student::all();
         return view("pages.students.students" , compact("students"));
     }
@@ -41,8 +45,11 @@ class studentRepository implements studentRepositoryInterface
 
     // insert the student
     public function store_student($request){
+//        return $request;
       try{
-        $students = new Student();
+          DB::beginTransaction(); // Start transaction
+
+          $students = new Student();
         $students->name = $request->name;
         $students->email = $request->email;
         $students->password = Hash::make($request->password);
@@ -56,11 +63,33 @@ class studentRepository implements studentRepositoryInterface
         $students->parent_id = $request->parent_id;
         $students->academic_year = $request->academic_year;
         $students->save();
-        toastr()->success(trans('messages.success'));
-        return redirect()->route('students');
+
+
+
+//          $students = Student::latest()->first();
+//          if($request->hasfile('photos'))
+//            {
+//                foreach($request->file('photos') as $file)
+//                {
+//                    $name = $file->getClientOriginalName();
+//                    $file->storeAs('attachments/students/'.$students->name, $file->getClientOriginalName(),'public');
+//
+//                    // insert in image_table
+//                    $images= new Image();
+//                    $images->filename=$name;
+//                    $images->imagable_id= $students->id;
+//                    $images->imagable_type = 'App\Models\Student';
+//                    $images->save();
+//                }
+//            }
+
+          DB::commit(); // insert data
+
+          toastr()->success(trans('messages.success'));
+
       }catch(Exception $e){
-        toastr()->error("the insert field");
-        return redirect()->route("students");
+        toastr()->error("the insert field" .$e);
+
     }
     return redirect("students");
     }
@@ -104,5 +133,12 @@ class studentRepository implements studentRepositoryInterface
         Student::destroy($request->id);
         toastr()->success("the student deleted successfully");
         return redirect("students");
+    }
+
+    public  function  show($id){
+        $Student = Student::findOrFail($id);
+
+        return view("pages.students.show" , compact("Student"));
+
     }
 }

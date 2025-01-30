@@ -14,7 +14,7 @@
                         </a>
                         <ul id="dashboard" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ url("/dash") }}">Dashboard 01</a> </li>
-                          
+
                         </ul>
                     </li>
                     <!-- menu title -->
@@ -24,13 +24,13 @@
                         <a href="javascript:void(1);" data-toggle="collapse" data-target="#grades">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{ lang::get("main_side_tr.grade_section") }}</span>
                             </div>
-                            
+
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="grades" class="collapse" data-parent="#sidebarnav_2">
                             <li>  <a href="{{ url("grade") }}">{{ lang::get("main_side_tr.grade_section") }}</a></li>
-                         
+
                         </ul>
                     </li>
                     {{--  --}}
@@ -38,13 +38,13 @@
                         <a href="javascript:void(1);" data-toggle="collapse" data-target="#classes">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{ lang::get("classes.title_page") }}</span>
                             </div>
-                            
+
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="classes" class="collapse" data-parent="#sidebarnav_2">
                             <li>  <a href="{{ url("classes") }}">{{ lang::get("classes.List_classes") }}</a></li>
-                         
+
                         </ul>
                     </li>
                     {{--  --}}
@@ -52,13 +52,13 @@
                         <a href="javascript:void(1);" data-toggle="collapse" data-target="#sections">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{ lang::get("Sections_trans.title_page") }}</span>
                             </div>
-                            
+
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="sections" class="collapse" data-parent="#sidebarnav_2">
                             <li>  <a href="{{ url("sections") }}">{{ lang::get("Sections_trans.title_page") }}</a></li>
-                         
+
                         </ul>
                     </li>
                     {{-- the parent section --}}
@@ -66,7 +66,7 @@
                         <a href="javascript:void(1);" data-toggle="collapse" data-target="#parents_modal">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{ lang::get("parents.parentTitle") }}</span>
                             </div>
-                            
+
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -83,10 +83,10 @@
                                 "><i class="fas fa-book-open"></i><span
                                         class="right-nav-text">{{ lang::get("parents.addparentTitle") }}</span></a>
                             </li>
-                    
-                    
-                           
-                         
+
+
+
+
                         </ul>
                     </li>
                     {{-- teachets --}}
@@ -94,7 +94,7 @@
                         <a href="javascript:void(1);" data-toggle="collapse" data-target="#teachets">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{ lang::get("Teachers.teachers") }}</span>
                             </div>
-                            
+
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -111,10 +111,10 @@
                                 "><i class="fas fa-book-open"></i><span
                                         class="right-nav-text">{{ lang::get("Teachers.teachers") }}</span></a>
                             </li>
-                    
-                    
-                           
-                         
+
+
+
+
                         </ul>
                     </li>
                     {{-- the student section --}}
@@ -122,7 +122,7 @@
                         <a href="javascript:void(1);" data-toggle="collapse" data-target="#students">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{ lang::get("students.students") }}</span>
                             </div>
-                            
+
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -135,14 +135,18 @@
                                 <a href="{{ route("students.create") }}"><i class="fas fa-book-open"></i><span
                                         class="right-nav-text">{{ trans("main_trans.add_student") }}</span></a>
                             </li>
+                            <li>
+                                <a href="{{ route("promotions.index") }}"><i class="fas fa-book-open"></i><span
+                                        class="right-nav-text">{{ trans("students.promotions") }}</span></a>
+                            </li>
                         </ul>
                     </li>
-                  
-               
+
+
                     <!-- menu item calendar-->
-                
+
                     <!-- menu item table -->
-                 
+
                 </ul>
             </div>
         </div>

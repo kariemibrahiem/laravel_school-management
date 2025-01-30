@@ -30,4 +30,8 @@ class Student extends Model
         return $this->belongsTo("App\Models\Blood_type" , "blood_id");
     }
 
+    public function images(){
+        return $this->morphMany('App\Models\Image', 'imagable');
+    }
+
 }

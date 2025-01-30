@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -79,6 +80,19 @@ Route::middleware("auth")->group(function(){
         Route::get("student.edit" , "StudentController@edit")->name("student.edit");
         Route::get("student.update" , "StudentController@update")->name("student.update");
         Route::get("student.destroy" , "StudentController@destroy")->name("student.destroy");
+        Route::get("student/{id}" , "StudentController@show")->name("student.show");
+        Route::get("student.Upload_attachment" , "StudentController@Upload_attachment")->name("Upload_attachment");
+
+
+//        promotions
+
+        Route::get("promotions" , "PromotionController@index")->name("promotions.index");
+        Route::get("promotions.create" , "PromotionController@create")->name("promotions.create");
+        Route::get("promotion.store" , "PromotionController@store")->name("promotion.store");
+
+//        Route::get("promotions.edit" , "PromotionController@edit")->name("promotions.edit");
+//        Route::get("promotions.update" , "PromotionController@update")->name("promotions.update");
+//        Route::get("promotions.destroy" , "PromotionController@destroy")->name("promotions.destroy");
 
 
 

@@ -51,14 +51,21 @@
                         <button class="btn btn-danger btn-sm nextBtn btn-lg pull-right" type="button"
                                 wire:click="back(2)">{{ trans('parents.Back') }}</button>
                                
-                                @if($updateModel)
-                                    <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="submitForm_edit"
-                                            type="button">{{trans('parents.Finish')}}
-                                    </button>
-                                @else
-                                    <button class="btn btn-success btn-sm btn-lg pull-right" wire:click="submitForm"
-                                            type="button">{{ trans('parents.Finish') }}</button>
-                                @endif
+
+                                <label style="color: red">{{trans('Parent_trans.Attachments')}}</label>
+                                <div class="form-group">
+                                    <input type="file" class="form-control" wire:model="photos" accept="image/*" multiple>
+                                </div>
+                                <br>
+                                @if($updateMode)
+                                <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="submitForm_edit"
+                                        type="button">{{trans('Parent_trans.Finish')}}
+                                </button>
+                            @else
+                                <button class="btn btn-success btn-sm btn-lg pull-right" wire:click="submitForm"
+                                        type="button">{{ trans('Parent_trans.Finish') }}</button>
+                            @endif
+
                     </div>
                 </div>
             </div>

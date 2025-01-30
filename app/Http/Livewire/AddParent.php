@@ -5,17 +5,21 @@ namespace App\Http\Livewire;
 use App\Models\Blood_type;
 use App\Models\Myparent;
 use App\Models\Nationalities;
+use App\Models\ParentAttachement;
 use App\Models\Religion;
 use Exception;
 use Flasher\Laravel\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class AddParent extends Component
 {
+    use WithFileUploads;
     
    
-        public $currentStep = 1, $updateModel = false , $Parent_id ,
+        public $currentStep = 1, $updateModel = false , $Parent_id  , $photos, $updateMode = false ,
     
             // Father_INPUTS
             $Email, $Password,
@@ -79,17 +83,16 @@ class AddParent extends Component
         //secondStepSubmit
         public function secondStepSubmit()
         {
-            // $this->validate([
-            //     'Name_Mother' => 'required|unique:myparents,M_name',
-            //     'National_ID_Mother' => 'required|unique:myparents,M_nationality_id,' . $this->id,
-            //     'Phone_Mother' => 'required|unique:myparents,M_phone',
-            //     'Job_Mother' => 'required',
-            //     'Nationality_Mother_id' => 'required',
-            //     'Blood_Type_Mother_id' => 'required',
-            //     'Religion_Mother_id' => 'required',
-            //     'Address_Mother' => 'required',
+            $this->validate([
+                'Name_Mother' => 'required|unique:myparents,M_name',
+                'Phone_Mother' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+                'Job_Mother' => 'required',
+                'Nationality_Mother_id' => 'required',
+                'Blood_Type_Mother_id' => 'required',
+                'Religion_Mother_id' => 'required',
+                'Address_Mother' => 'required',
               
-            // ]);
+            ]);
             $this->currentStep = 3;
         }
 
@@ -161,6 +164,21 @@ class AddParent extends Component
                 $parent->M_address = $this->Address_Mother;
 
                 $parent->save();
+
+
+                if(!empty($this->photos)){
+                    $parent_id = Myparent::latest()->first()->id;
+
+                    foreach($this->photos as $photo){
+                        $path = Storage::disk("public")->put("parent_attach/". $this->Nationality_Father_id , $photo->getClientOriginalName());
+
+                        ParentAttachement::create([
+                            "filename"=>$photo->getClientOriginalName(),
+                            "parent_id"=>$parent_id,
+                        ]);
+                    }
+                    toastr()->success("attachment stored successfully");
+                }
         }
 
         return redirect('/addparents');
@@ -195,6 +213,17 @@ class AddParent extends Component
                 $myparent->M_address = $this->Address_Mother;
 
                 $myparent->save();
+
+                
+            if (!empty($this->photos)){
+                foreach ($this->photos as $photo) {
+                    $photo->storeAs($this->National_ID_Father, $photo->getClientOriginalName(), $disk = 'local');
+                    ParentAttachement::create([
+                        'filename' => $photo->getClientOriginalName(),
+                        'parent_id' => Myparent::latest()->first()->id,
+                    ]);
+                }
+            }
                 // $this->successMessage = trans('messages.success');
                 $this->clearForm();
                 $this->currentStep = 1;
