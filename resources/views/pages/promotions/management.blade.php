@@ -54,7 +54,7 @@
                                                 <td>{{ $loop->index+1 }}</td>
                                                 <td>{{$promotion->student->name}}</td>
                                                 <td>{{$promotion->f_grade->name}}</td>
-                                                <td>{{$promotion->to_year}}</td>
+                                                <td>{{$promotion->from_year}}</td>
                                                 <td>{{$promotion->f_classroom->className}}</td>
                                                 <td>{{$promotion->f_section->Name_Section}}</td>
                                                 <td>{{$promotion->t_grade->name}}</td>

@@ -21,6 +21,8 @@ return [
     "next_year" => "new year",
 
     "promotions_create" => " create upgrades",
+    "managementPromotions" => " manage Promotions ",
+    "promotionsTitle" => "  Promotions ",
     'name' => 'Name',
     'name_ar' => 'name',
     'name_en' => 'name_en',

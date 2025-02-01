@@ -21,6 +21,8 @@ return [
     "next_year" => "المرحلة الدراسية الحاليه  ",
 
     "promotions_create" => "انشاء ترقيه الطلاب  ",
+    "managementPromotions" => "ادارة الترقيات   ",
+    "promotionsTitle" => " الترقيات   ",
     'name' => 'اسم الطالب',
     'name_ar' => 'الاسم باللغة العربية',
     'name_en' => 'الاسم باللغة الانجليزية',

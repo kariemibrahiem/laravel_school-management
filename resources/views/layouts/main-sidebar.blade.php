@@ -127,21 +127,45 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="students" class="collapse" data-parent="#sidebarnav_2">
+{{--                        student managements--}}
                             <li>
-                                <a href="{{ url("students") }}"><i class="fas fa-book-open"></i><span
-                                        class="right-nav-text">{{ trans("main_trans.students") }}</span></a>
+                                <a href="javascript:void(1);" data-toggle="collapse" data-target="#sub_students">
+                                    <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{ lang::get("students.students") }}</span>
+                                    </div>
+
+                                    <div class="pull-right"><i class="ti-plus"></i></div>
+                                    <div class="clearfix"></div>
+                                </a>
+                                <ul id="sub_students" class="collapse" data-parent="#sidebarnav_2">
+                                    <li>
+                                        <a href="{{ url("students") }}"><i class="fas fa-book-open"></i><span
+                                                class="right-nav-text">{{ trans("main_trans.students") }}</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route("students.create") }}"><i class="fas fa-book-open"></i><span
+                                                class="right-nav-text">{{ trans("main_trans.add_student") }}</span></a>
+                                    </li>
+                                </ul>
                             </li>
+{{--                            promotions options--}}
                             <li>
-                                <a href="{{ route("students.create") }}"><i class="fas fa-book-open"></i><span
-                                        class="right-nav-text">{{ trans("main_trans.add_student") }}</span></a>
-                            </li>
-                            <li>
-                                <a href="{{ route("promotions.index") }}"><i class="fas fa-book-open"></i><span
-                                        class="right-nav-text">{{ trans("students.promotions") }}</span></a>
-                            </li>
-                            <li>
-                                <a href="{{ route("promotions.create") }}"><i class="fas fa-book-open"></i><span
-                                        class="right-nav-text">{{ trans("students.promotions_create") }}</span></a>
+                                <a href="javascript:void(1);" data-toggle="collapse" data-target="#sub_promotion">
+                                    <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{ lang::get("students.promotionsTitle") }}</span>
+                                    </div>
+
+                                    <div class="pull-right"><i class="ti-plus"></i></div>
+                                    <div class="clearfix"></div>
+                                </a>
+                                <ul id="sub_promotion" class="collapse" data-parent="#sidebarnav_2">
+                                    <li>
+                                        <a href="{{ route("promotions.index") }}"><i class="fas fa-book-open"></i><span
+                                                class="right-nav-text">{{ trans("students.promotions") }}</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route("promotions.create") }}"><i class="fas fa-book-open"></i><span
+                                                class="right-nav-text">{{ trans("students.managementPromotions") }}</span></a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </li>

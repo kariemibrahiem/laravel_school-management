@@ -25,8 +25,8 @@ class CreatePromotionsTable extends Migration
             $table->foreignId("to_grade")->constrained("grades")->cascadeOnDelete();
             $table->foreignId("to_section")->constrained("sections")->cascadeOnDelete();
 
-            $table->string("from_year");
-            $table->string("to_year");
+            $table->integer("from_year")->nullable();
+            $table->integer("to_year")->nullable();
 
             $table->timestamps();
         });

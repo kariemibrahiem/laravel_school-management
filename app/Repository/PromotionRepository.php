@@ -17,6 +17,7 @@ class PromotionRepository implements PromotionRepositoryInterface
 
     public function store($request)
     {
+//        return $request;
         DB::beginTransaction();
         try {
             $students = Student::where("grade_id" , $request->Grade_id)->where("section_id" , $request->section_id )->where("Classroom_id" , $request->Classroom_id)->get();
@@ -66,7 +67,6 @@ class PromotionRepository implements PromotionRepositoryInterface
                 $Promotions = Promotion::all();
                 foreach ($Promotions as $Promotion) {
 
-                    //التحديث في جدول الطلاب
                     $ids = explode(',', $Promotion->student_id);
                     Student::whereIn('id', $ids)
                         ->update([
@@ -76,7 +76,6 @@ class PromotionRepository implements PromotionRepositoryInterface
                             'academic_year' => $Promotion->from_year,
                         ]);
 
-                    //حذف جدول الترقيات
                     Promotion::truncate();
 
                     DB::commit();
