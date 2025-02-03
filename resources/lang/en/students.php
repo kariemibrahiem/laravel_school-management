@@ -5,6 +5,7 @@ return [
     'personal_information' => 'personal information',
     "add_student"=>"add student",
     "students" => "students",
+    "grad_students" => "graduated students",
     "new_grades"=>"new grades",
     "old_grades"=>"old grades",
     "promotions" => " upgrade students",

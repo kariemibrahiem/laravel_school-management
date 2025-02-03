@@ -25,6 +25,11 @@ class StudentController extends Controller
         return  $this->student->getAll();
     }
 
+    public function graduated_students()
+    {
+       return $this->student->graduated_students();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -114,6 +119,12 @@ class StudentController extends Controller
     public function destroy(Request $request)
     {
         return  $this->student->destroy($request);
+    }
+
+    public function restore(Request $request)
+    {
+        return $this->student->restore($request);
+
     }
 
 

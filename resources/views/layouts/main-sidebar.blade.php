@@ -145,6 +145,10 @@
                                         <a href="{{ route("students.create") }}"><i class="fas fa-book-open"></i><span
                                                 class="right-nav-text">{{ trans("main_trans.add_student") }}</span></a>
                                     </li>
+                                    <li>
+                                        <a href="{{ route("grad_students") }}"><i class="fas fa-book-open"></i><span
+                                                class="right-nav-text">{{ trans("students.grad_students") }}</span></a>
+                                    </li>
                                 </ul>
                             </li>
 {{--                            promotions options--}}

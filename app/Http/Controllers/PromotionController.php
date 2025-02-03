@@ -88,4 +88,10 @@ class PromotionController extends Controller
     {
         return  $this->promotion->destroy($request);
     }
+    public function graduate($id)
+    {
+            return $this->promotion->graduate($id);
+    }
+
+
 }

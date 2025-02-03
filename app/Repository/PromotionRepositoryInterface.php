@@ -10,4 +10,8 @@ interface PromotionRepositoryInterface
 
     public function destroy($request);
 
+    public function graduate($id);
+
+
+
 }

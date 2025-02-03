@@ -52,7 +52,7 @@
                                         @foreach($promotions as $promotion)
                                             <tr>
                                                 <td>{{ $loop->index+1 }}</td>
-                                                <td>{{$promotion->student->name}}</td>
+                                                <td class="{{$promotion->student ? "bg-success" : "bg-danger"}}"> {{$promotion->student ? $promotion->student->name : "no students"}}</td>
                                                 <td>{{$promotion->f_grade->name}}</td>
                                                 <td>{{$promotion->from_year}}</td>
                                                 <td>{{$promotion->f_classroom->className}}</td>
@@ -63,19 +63,82 @@
                                                 <td>{{$promotion->t_section->Name_Section}}</td>
                                                 <td>
                                                     <div class="d-flex g-1">
-                                                        <a href="{{route('student.edit',$promotion->id)}}"
-                                                           class="btn btn-info btn-sm m-1" role="button"
-                                                           aria-pressed="true"><i
-                                                                class="fa fa-edit"></i></a>
-                                                        <button type="button" class="btn btn-danger btn-sm m-1"
-                                                                data-toggle="modal"
-                                                                data-target="#Delete_Student{{ $promotion->id }}"
-                                                                title="{{ trans('Grades_trans.Delete') }}"><i
-                                                                class="fa fa-trash "></i></button>
-                                                        <a href="{{route('student.show',$promotion->id)}}"
-                                                           class="btn btn-warning btn-sm m-1" role="button"
-                                                           aria-pressed="true"><i
-                                                                class="far fa-eye"></i></a>
+                                                        <button type="button" class="btn btn-danger mr-3" data-toggle="modal" data-target="#single_student_{{$promotion->student_id}}">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+
+                                                        {{--    the modal of delete jsut one student --}}
+
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="single_student_{{$promotion->student_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <form action="{{route("promotions.destroy" , "test")}}">
+
+                                                                        <div class="modal-body">
+                                                                            ...
+                                                                        </div>
+
+                                                                        <input type="hidden" value="2" name="status_id">
+                                                                        <input type="hidden" value="{{$promotion->student_id}}" name="student_id">
+                                                                        <input type="hidden" value="{{$promotion->id}}" name="promotion_id">
+
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                            <button type="submit" class="btn btn-danger"> <i class="fa fa-trash"></i> </button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <a href="{{route("promotions.graduate" , ["id"=>$promotion->id])}}"  class="btn btn-sm btn-outline-primary">
+                                                            upgrade
+                                                        </a>
+
+
+{{--                                                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#graduate_student_{{$promotion->student_id}}">--}}
+{{--                                                            graduate--}}
+{{--                                                        </button>--}}
+
+{{--                                                        --}}{{--    the modal of graduate the student  --}}
+
+{{--                                                        <!-- Modal -->--}}
+{{--                                                        <div class="modal fade" id="graduate_student_{{$promotion->student_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">--}}
+{{--                                                            <div class="modal-dialog" role="document">--}}
+{{--                                                                <div class="modal-content">--}}
+{{--                                                                    <div class="modal-header">--}}
+{{--                                                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>--}}
+{{--                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+{{--                                                                            <span aria-hidden="true">&times;</span>--}}
+{{--                                                                        </button>--}}
+{{--                                                                    </div>--}}
+{{--                                                                    <form action="{{route("promotions.graduate" , "test")}}">--}}
+
+{{--                                                                        <div class="modal-body">--}}
+{{--                                                                            ...--}}
+{{--                                                                        </div>--}}
+
+{{--                                                                        <input type="hidden" value="2" name="status_id">--}}
+{{--                                                                        <input type="hidden" value="{{$promotion->id}}" name="promotion_id">--}}
+
+{{--                                                                        <div class="modal-footer">--}}
+{{--                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--}}
+{{--                                                                            <button type="submit" class="btn btn-danger"> <i class="fa fa-trash"></i> </button>--}}
+{{--                                                                        </div>--}}
+{{--                                                                    </form>--}}
+{{--                                                                </div>--}}
+{{--                                                            </div>--}}
+{{--                                                        </div>--}}
+
                                                     </div>
                                                 </td>
                                             </tr>
@@ -91,6 +154,7 @@
         </div>
     </div>
     <!-- row closed -->
+
 {{--    the modal of rollback--}}
 
     <!-- Modal -->
@@ -109,7 +173,7 @@
                         ...
                     </div>
 
-                    <input type="hidden" value="1" name="promotion_id">
+                    <input type="hidden" value="1" name="status_id">
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-danger">{{trans("students.delete_all")}}</button>

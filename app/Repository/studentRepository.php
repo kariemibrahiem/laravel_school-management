@@ -33,6 +33,12 @@ class studentRepository implements studentRepositoryInterface
         return view("pages.students.students" , compact("students"));
     }
 
+    public function graduated_students()
+    {
+        $students = Student::onlyTrashed()->get();
+        return view("pages.students.students" , compact("students"));
+    }
+
     public function Get_classrooms($id){
         $list_classes = ClassRoom::where("grade_id" , $id)->pluck("className" , "id");
         return $list_classes ;
@@ -130,8 +136,14 @@ class studentRepository implements studentRepositoryInterface
 
 
     public function destroy($request){
-        Student::destroy($request->id);
+        Student::forceDeleted($request->id);
         toastr()->success("the student deleted successfully");
+        return redirect("student.graduated_students");
+    }
+
+    public function restore($request){
+        Student::withTrashed($request->student_id)->restore();
+        toastr()->success("the student restored successfully");
         return redirect("students");
     }
 
@@ -139,6 +151,5 @@ class studentRepository implements studentRepositoryInterface
         $Student = Student::findOrFail($id);
 
         return view("pages.students.show" , compact("Student"));
-
     }
 }

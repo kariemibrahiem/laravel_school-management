@@ -63,7 +63,7 @@ class PromotionRepository implements PromotionRepositoryInterface
         DB::beginTransaction();
         try{
 
-            if ($request->promotion_id == 1){
+            if ($request->status_id == 1){
                 $Promotions = Promotion::all();
                 foreach ($Promotions as $Promotion) {
 
@@ -82,13 +82,39 @@ class PromotionRepository implements PromotionRepositoryInterface
                     toastr()->success("the proccess success");
             }
             }else{
-                return "2";
+                $promotion_s = Promotion::findOrFail($request->promotion_id);
+                Student::where("id" , $promotion_s->student_id)->update([
+                    'Grade_id' => $promotion_s->from_grade ,
+                    'Classroom_id' => $promotion_s->from_class_room ,
+                    'section_id' => $promotion_s->from_section ,
+                    'academic_year' => $promotion_s->from_year,
+                ]);
 
+
+                Promotion::destroy($request->promotion_id);
+
+                DB::commit();
+                toastr()->success("i think its work");
             }
         }catch (\Exception $e){
             DB::rollBack();
-            toastr()->error("dont work");
+            toastr()->error("dont work" . $e);
         }
-        return redirect("students");
+        return redirect("promotions.create");
     }
+
+    public function graduate($id){
+        DB::beginTransaction();
+        try {
+            $promotion = Promotion::find($id);
+            Student::where("id" , $promotion->student_id)->delete();
+            toastr()->success("the student deleted successfully");
+            DB::commit();
+        }catch (\Exception $e){
+            toastr()->error("not good");
+            DB::rollBack();
+        }
+        return redirect("promotions.create");
+    }
+
 }

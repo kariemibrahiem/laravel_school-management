@@ -20,4 +20,8 @@ interface studentRepositoryInterface
     public function destroy($request);
 
     public function show($id);
+
+    public function graduated_students();
+
+    public function restore($request);
 }

@@ -5,6 +5,7 @@ return [
     'personal_information' => 'المعلومات الشخصية',
     'add_student' => ' اضافه طالب',
     "students" => "الطلاب",
+    "grad_students" => "الطلاب الخريجين",
     "old_grades" => "المرحلة الدراسية الجديدة",
     "new_grades" => "المرحلة الدراسية القديمه",
     "promotions" => "ترقيه الطلاب",

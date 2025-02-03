@@ -82,6 +82,8 @@ Route::middleware("auth")->group(function(){
         Route::get("student.destroy" , "StudentController@destroy")->name("student.destroy");
         Route::get("student/{id}" , "StudentController@show")->name("student.show");
         Route::get("student.Upload_attachment" , "StudentController@Upload_attachment")->name("Upload_attachment");
+        Route::get("student.graduated_students" , "StudentController@graduated_students")->name("grad_students");
+        Route::get("student.restore" , "StudentController@restore")->name("student.restore");
 
 
 //        promotions
@@ -90,9 +92,10 @@ Route::middleware("auth")->group(function(){
         Route::get("promotions.create" , "PromotionController@create")->name("promotions.create");
         Route::get("promotion.store" , "PromotionController@store")->name("promotion.store");
         Route::get("promotions.destroy" , "PromotionController@destroy")->name("promotions.destroy");
+        Route::get("promotions.delete" , "PromotionController@delete")->name("promotions.delete");
+        Route::get("promotions.graduate/{id}" , "PromotionController@graduate")->name("promotions.graduate");
 
 //        Route::get("promotions.edit" , "PromotionController@edit")->name("promotions.edit");
-//        Route::get("promotions.update" , "PromotionController@update")->name("promotions.update");
 
 
 
